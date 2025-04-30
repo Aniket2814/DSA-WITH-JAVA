@@ -5,8 +5,15 @@ class Demo1
 public static void main(String ar[])
 {
 int x[]={3,2,1,5,2};
-Arrays.sort(x);
-System.out.println("The Largest Element is " +(x[x.length-1]));
+int largest=x[0];
+for(int i=0;i<x.length;i++)
+{
+	if(x[i]>largest)
+	{
+		largest=x[i];
+	}
+}
+System.out.println("The Largest Element is " +largest);
 }
 
 }
