@@ -8,19 +8,24 @@ int a[]={1,2,2,3,3,4,5,6};
 int b[]={2,3,3,5,6,6,7};
 int k=0;
 int ans[]=new int[a.length];
-int visited[]=new int[a.length];
-Arrays.fill(visited,0);
-for(int i =0;i<a.length;i++)
+int i=0,j=0;
+while(i<a.length&& j<b.length)
 {
-	for(int j=0;j<b.length;j++)
+	if(a[i]<b[j])
 	{
-		if(a[i]==b[j] && visited[j]==0)
-		{      ans[k++]=a[i];
-             visited[j]=1;
-              break;
-	}   
-	if(b[j]>a[i]) break;
-}}
+		i++;
+	}
+	else if(b[j] <a[i])
+	{
+		j++;
+	}
+	else 
+	{
+		ans[k++]=a[i];
+		i++;
+		j++;
+	}
+}
 for(int z=0;z<k;z++)
 {
 	System.out.println(" "+ans[z]);
