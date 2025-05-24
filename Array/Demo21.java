@@ -16,19 +16,31 @@ else
 	
 }
 public static int majorityElement(int[] nums) {
-     int n=nums.length;
-     HashMap<Integer,Integer> h=new HashMap<>();
+       int n =nums.length;
+    int ele=0;
+    int cout=0;
     for(int i=0;i<n;i++)
     {
-        h.put(nums[i],h.getOrDefault(nums[i],0)+1);
-    }
-    for(int i:h.keySet()) 
-    {
-      if(h.get(i)>n/2)
+      if(cout==0)
       {
-        return i;
+        cout=1;
+        ele=nums[i];
       }
-    }  
+      else if(ele==nums[i])
+      {
+        cout++;
+      }
+      else
+      cout--;
+    }
+    int cout1=0;
+    for(int i=0;i<n;i++)
+    {
+        if(nums[i]==ele)
+        cout1++;
+    }
+    if(cout1>n/2)
+    return ele;
     return -1;
     }
 }
