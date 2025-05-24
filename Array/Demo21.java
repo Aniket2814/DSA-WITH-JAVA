@@ -1,6 +1,6 @@
 //Majority Element 
 //LeetCode 169
-
+import java.util.*;
 class Demo21
 {
 public static void main(String ar[])
@@ -17,18 +17,18 @@ else
 }
 public int majorityElement(int[] nums) {
      int n=nums.length;
-     int cout=0;
-     for(int i=0;i<n;i++)
-     {
-        cout=0;
-        for(int j=0;j<n;j++)
-          {
-            if(nums[i]==nums[j])
-            cout++;
-          }  
-          if(cout >n/2)
-          return nums[i];
-       }   
+     HashMap<Integer,Integer> h=new HashMap<>();
+    for(int i=0;i<n;i++)
+    {
+        h.put(nums[i],h.getOrDefault(nums[i],0)+1);
+    }
+    for(int i:h.keySet()) 
+    {
+      if(h.get(i)>n/2)
+      {
+        return i;
+      }
+    }  
     return -1;
     }
 }
