@@ -1,3 +1,6 @@
+//Two Sum(LeetCode : 1)
+//Better
+import java.util.*;
 class Demo20
 {
 public static void main(String ar[])
@@ -14,17 +17,18 @@ public static void main(String ar[])
 }
  public static int[] twoSum(int[] nums, int target) {
 //Brute Force
-    for(int i=0;i<nums.length;i++)
-    {
-        for(int j=0;j<nums.length;j++)
+  //Better Approach
+     HashMap <Integer,Integer> h=new HashMap<>();
+     for(int i=0;i<nums.length;i++)
+     {
+        int ele=nums[i];
+        int left=target-ele;
+        if(h.containsKey(left))
         {
-            if(i==j) continue;
-            if(nums[i]+nums[j]==target)
-            {
-                return new int[]{i,j};
-            }
+            return new int[]{h.get(left),i};
         }
-    }
-    return new int[]{};
+         h.put(ele,i);
+     }
+     return new int[]{};
 }
 }
