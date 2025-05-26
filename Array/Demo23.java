@@ -1,3 +1,4 @@
+import java.util.*;
  class Demo23
  {
  public static void main(String ar[])
@@ -14,38 +15,34 @@ int n=3;
  }
   public static int [] merge(int[] nums1, int m, int[] nums2, int n)
   {
-	  int left=0;
+ int left=m-1;
 	  int right=0;
-	  int arr[]=new int[m+n];
 	  int index=0;
-	  while(left<m && right <n)
+	  while(left>=0 && right <n)
 	  {
-		  if(nums1[left] <= nums2[right])
+		  if(nums1[left] > nums2[right])
 		  {
-			  arr[index]=nums1[left];
-		       index++;
-			   left++;
+			  swap(nums1,left,nums2,right);
+		       left--;
+               right++;
 		  }
 		  else
 		  {
-			  arr[index]=nums2[right];
-			  index++;
-			  right++;
+            break;
 		  }
 		  
 	  }
-	  while(left<m)
-	  {
-		  arr[index++] =nums1[left++];
-	  }
-	  while(right<n)
-	  {
-		  arr[index++] =nums2[right++];
-	  }
-	  for(int i = 0; i < m + n; i++) {
-         nums1[i] = arr[i];
-              }
-	  return nums1;
-	  
-  }
+	Arrays.sort(nums1,0,m);
+    Arrays.sort(nums2); 
+     for (int i = 0; i < n; i++) {
+    nums1[m + i] = nums2[i];
+}
+return nums1;
+   }
+ public static void swap(int[] nums1, int i, int[] nums2, int j) {
+        int temp = nums1[i];
+        nums1[i] = nums2[j];
+        nums2[j] = temp;
+    }
+
  }
