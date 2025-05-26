@@ -2,10 +2,10 @@
  {
  public static void main(String ar[])
  {
- int arr1[]={1,3,5,7};
- int arr2[]={0,2,6,8,9};
- int n=arr2.length;
- int m=arr1.length;
+ int arr1[]={1,2,3,0,0,0};
+ int arr2[]={2,5,6};
+int m=3;
+int n=3;
  int ans[]=new int[m+n];
   ans=merge(arr1,m,arr2,n);
   System.out.println("After Merging Two Arrays");
@@ -42,8 +42,10 @@
 	  {
 		  arr[index++] =nums2[right++];
 	  }
-	  
-	  return arr;
+	  for(int i = 0; i < m + n; i++) {
+         nums1[i] = arr[i];
+              }
+	  return nums1;
 	  
   }
  }
