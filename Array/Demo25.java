@@ -1,36 +1,39 @@
 //Pascal Triangle
 //LeetCode 118
-//Second Type :Print any Given Row
+//Third Type :Generate Pascal triangle
+import java.util.*;
 class Demo25
 {
 public static void main(String ar[])
 {
 	
-    // int row=5;
-	// int col=3;
-	int row=5;
-    pascalTriangle(row);
-	// System.out.println("The element at Column = " +col+ " and Row = " +row+ " = " +ans);
+	int numRows=5;
+    List<List<Integer>> al=generate(numRows);
+	System.out.println("The pascal triangle is = " +al);
 }
-// public static long nCr(int n,int row)
-// {
-	// long res=1;
-	// for(int i=0;i<row;i++)
-	// {
-		// res=res*(n-i);
-		// res=res/(i+1);
-	// }
-	// return res;
-// }
-public static void pascalTriangle(int n)
-{
-	int ans=1;
-	System.out.print(" " +ans);
-	for(int c=1;c<n;c++)
-	{
-	ans=ans*(n-c);
-	ans=ans/(c);
-	System.out.print(" "+ans);
-}}
+ public static List<List<Integer>> generate(int numRows) {
+        if (numRows == 0) return new ArrayList<>();
+       List<List<Integer>> result = new ArrayList<>();
+        for(int i=1;i<=numRows;i++)
+        {
+         ArrayList <Integer> temp=generateRows(i);
+         result.add(temp);
+        
+        }
+     return result;
+       }
+       public static ArrayList<Integer> generateRows(int row)
+       {
+        int ans=1;
+        ArrayList <Integer> al=new ArrayList<>();
+        al.add(1);
+        for(int col=1;col<row;col++)
+        {
+            ans=ans*(row-col);
+            ans=ans/col;
+            al.add(ans);
+        }
+        return al;
+       }
 }
 
