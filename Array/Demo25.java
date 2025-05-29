@@ -1,14 +1,16 @@
 //Pascal Triangle
 //LeetCode 118
-//First Type : Given row and Column tell me the Element at that Place
+//Second Type :Print any Given Row
 class Demo25
 {
 public static void main(String ar[])
 {
-    int row=5;
-	int col=3;
-	int ans= pascalTriangle(col,row);
-	System.out.println("The element at Column = " +col+ " and Row = " +row+ " = " +ans);
+	
+    // int row=5;
+	// int col=3;
+	int row=5;
+    pascalTriangle(row);
+	// System.out.println("The element at Column = " +col+ " and Row = " +row+ " = " +ans);
 }
 public static long nCr(int n,int row)
 {
@@ -20,10 +22,12 @@ public static long nCr(int n,int row)
 	}
 	return res;
 }
-public static int pascalTriangle(int col,int row)
+public static void pascalTriangle(int n)
 {
-	int element=(int)nCr(row-1,col-1);
-	return element;
-}
+	for(int c=1;c<=n;c++)
+	{
+	int element=(int)nCr(n-1,c-1);
+	System.out.print(" "+element);
+}}
 }
 
