@@ -14,26 +14,22 @@ class RearrangeArray
 	}
    public static int[] rearrangeArray(int[] nums)
     { 
-	  int n=nums.length;
-	  int k=0,j=0;
+	 int n=nums.length;
+	  int pos=0;
+      int neg=1;
 	  int ans[]=new int[n];
-	  int pos[]=new int[n/2]; 	
-	  int neg[]=new int[n/2];
-       for(int i:nums)
-	   {
-		   if(i>0)
-		   {
-			 pos[k++]=i;
-		   }
-		   else
-		   {
-			 neg[j++]=i;			 
-		   }   
-	   }
-        for(int i=0;i<n/2;i++)
+      for(int i=0;i<n;i++)
 		{
-			ans[2*i]=pos[i];
-			ans[2*i+1]=neg[i];
+		if(nums[i]>0)
+        {
+        ans[pos]=nums[i];
+         pos+=2; 
+        }
+        else
+        {
+         ans[neg]=nums[i];
+         neg+=2;
+        }
 		}	
         return ans;		
     }
