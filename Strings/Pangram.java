@@ -12,19 +12,18 @@
 	 }
 	 public static boolean checkIfPangram(String s) {
         int arr[]=new int[26];
+         int cout=0;
         for(int i=0;i<s.length();i++)
         {
             char c=s.charAt(i);
             int index=c-'a';
-            arr[index]++;
-        }
-         for(int i=0;i<26;i++)
-         {
-            if(arr[i]==0)
+            if(arr[index]==0)
             {
-                return false;
+            arr[index]++;
+            cout++;
             }
-         }
-         return true;
+        }
+        if(cout==26) return true;
+         return false;
     }
  }
