@@ -9,9 +9,26 @@ int ans=maxProductDifference(nums);
 System.out.println("Maximum Product of Array = " +ans);
   }
   public static int maxProductDifference(int[] nums) {
-        Arrays.sort(nums);
-        int n=nums.length-1;
-        int ans=(nums[n]*nums[n-1])-(nums[0]*nums[1]);
-     return ans;
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+        
+        int smallest = Integer.MAX_VALUE;
+        int secondSmallest = Integer.MAX_VALUE;
+        for (int num : nums) {
+            if (num > largest) {
+                secondLargest = largest;
+                largest = num;
+            } else {
+                secondLargest = Math.max(secondLargest, num);
+            }
+            
+            if (num < smallest) {
+                secondSmallest = smallest;
+                smallest = num;
+            } else {
+                secondSmallest = Math.min(secondSmallest, num);
+            }
+        }  
+        return (largest * secondLargest) - (secondSmallest * smallest);
     }
 } 
