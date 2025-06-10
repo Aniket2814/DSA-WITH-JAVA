@@ -9,31 +9,29 @@ class RemoveOutermost
 	System.out.println("After Removing Outer parenthesis (Decompostion of String) : " +output);jav
    }
    public static String removeOuterParentheses(String s1) {
-    Stack <Character > st=new Stack<>();
     StringBuilder sb=new StringBuilder();
+    int cout=0;
     for(int i=0;i<s1.length();i++)
     {
      char c=s1.charAt(i);
      if(c=='(')
      {
-        if(st.size()>0)
-        {
-          sb.append(c);  
-        }
-        st.push(c);
+       if(cout>0)
+       {
+         sb.append(c);
+       }
+       cout++;
      }
      else
-     {
-        st.pop();
-        if(st.size()>0)
+     {  
+        cout--;
+        if(cout>0)
         {
           sb.append(c);  
-        }
-         
+        }     
      }
     }        
     return sb.toString();
-        
    }
  
  }
