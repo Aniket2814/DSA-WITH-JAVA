@@ -1,7 +1,8 @@
+
 /**
  * @author Aniket Rathore
  * @Description : Reverse an Array Using Recurrsion
- * @since 14-07-25
+ * 
  */
 
 public class ReverseArray {
@@ -12,19 +13,20 @@ public class ReverseArray {
 	 * @param l
 	 * @param r
 	 */
-	public void reverse(int nums[], int l, int r) {
+	public void reverse(int nums[], int i) {
 		/**
 		 * Base Condition
 		 */
-		if (l >= r)
+		int n = nums.length;
+		if (i >= n / 2)
 			return;
 		/**
 		 * Swapping
 		 */
-		int temp = nums[l];
-		nums[l] = nums[r];
-		nums[r] = temp;
-		reverse(nums, l + 1, r - 1);
+		int temp = nums[i];
+		nums[i] = nums[n - i - 1];
+		nums[n - i - 1] = temp;
+		reverse(nums, i + 1);
 	}
 
 	public static void main(String[] args) {
@@ -36,7 +38,7 @@ public class ReverseArray {
 			System.out.print(i + " ");
 		}
 		ReverseArray reversearray = new ReverseArray();
-		reversearray.reverse(nums, 0, n - 1);
+		reversearray.reverse(nums, 0);
 		System.out.println("");
 		System.out.println("Reversed Array :");
 		for (int i : nums) {
