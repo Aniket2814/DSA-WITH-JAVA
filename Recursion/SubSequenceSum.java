@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /**
  * @author Aniket Rathore
- * @Description : Print any Subsequence whose Sum is Equals to k Using Recursion
+ * @Description : Count Subsequence whose Sum is Equals to k Using Recursion
  * 
  */
 public class SubSequenceSum {
@@ -12,44 +12,37 @@ public class SubSequenceSum {
 	 * @param arr
 	 * @param n
 	 * @param index
-	 * @param al
 	 * @param s     :initial Sum
 	 * @param sum
 	 */
-	public boolean subsequence(int arr[], int n, int index, ArrayList<Integer> al, int s, int sum) {
+	public int subsequence(int arr[], int n, int index, int s, int sum) {
 		/**
 		 * Base Condition
 		 */
 		if (index == n) {
 			// condition satisfied
 			if (s == sum) {
-				System.out.println(al);
-				return true;
+				return 1;
 			}
-			return false;
+			return 0;
 		}
 		/*
 		 * Include current Element
 		 */
-		al.add(arr[index]);
 		s += arr[index];
-		if (subsequence(arr, n, index + 1, al, s, sum) == true) {
-			return true;
-		}
+		int left = subsequence(arr, n, index + 1, s, sum);
+
 		/**
 		 * BackTrack and decrement current Sum
 		 */
 		s -= arr[index];
-		al.remove(al.size() - 1);
 
 		/**
 		 * Exclude the current Element
 		 */
 
-		if (subsequence(arr, n, index + 1, al, s, sum) == true) {
-			return true;
-		}
-		return false;
+		int right = subsequence(arr, n, index + 1, s, sum);
+		return left + right;
 	}
 
 	public static void main(String[] args) {
@@ -58,6 +51,7 @@ public class SubSequenceSum {
 		int sum = 2;
 
 		SubSequenceSum printSubSequence = new SubSequenceSum();
-		printSubSequence.subsequence(nums, n, 0, new ArrayList<Integer>(), 0, sum);
+		System.out.println(
+				"The Number of Subsequence Whose Sum is k = " + printSubSequence.subsequence(nums, n, 0, 0, sum));
 	}
 }
