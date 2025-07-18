@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /**
  * @author Aniket Rathore
- * @Description : Print all Subsequence whose Sum is Equals to k Using Recursion
+ * @Description : Print any Subsequence whose Sum is Equals to k Using Recursion
  * 
  */
 public class SubSequenceSum {
@@ -16,22 +16,26 @@ public class SubSequenceSum {
 	 * @param s     :initial Sum
 	 * @param sum
 	 */
-	public void subsequence(int arr[], int n, int index, ArrayList<Integer> al, int s, int sum) {
+	public boolean subsequence(int arr[], int n, int index, ArrayList<Integer> al, int s, int sum) {
 		/**
 		 * Base Condition
 		 */
 		if (index == n) {
+			// condition satisfied
 			if (s == sum) {
 				System.out.println(al);
+				return true;
 			}
-			return;
+			return false;
 		}
 		/*
 		 * Include current Element
 		 */
 		al.add(arr[index]);
 		s += arr[index];
-		subsequence(arr, n, index + 1, al, s, sum);
+		if (subsequence(arr, n, index + 1, al, s, sum) == true) {
+			return true;
+		}
 		/**
 		 * BackTrack and decrement current Sum
 		 */
@@ -42,7 +46,10 @@ public class SubSequenceSum {
 		 * Exclude the current Element
 		 */
 
-		subsequence(arr, n, index + 1, al, s, sum);
+		if (subsequence(arr, n, index + 1, al, s, sum) == true) {
+			return true;
+		}
+		return false;
 	}
 
 	public static void main(String[] args) {
